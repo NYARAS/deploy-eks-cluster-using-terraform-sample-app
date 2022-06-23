@@ -15,7 +15,7 @@ runnig Terraform commands.
 
 * `AWS_DEFAULT_REGION` - AWS region to create the resources
 * `AWS_ACCESS_KEY_ID` - Access Key ID to be used by the pipeline
-to authenticate with your AWS Account
+  to authenticate with your AWS Account
 * `AWS_SECRET_ACCESS_KEY` - Secret Access Key to be used by the
-pipeline to authenticate with your AWS Account
+  pipeline to authenticate with your AWS Account
 * `KUBERNETES_CLUSTER` - The name of the EKS cluster to deploy
