@@ -1,0 +1,45 @@
+---
+# Default values for sample app.
+# This is a YAML-formatted file.
+# Declare variables to be passed into your templates.
+app:
+  group: backend
+  replicaCount: 1
+  minReplicas: 1
+  maxReplicas: 10
+  targetCPUup: 60
+  container:
+    port: 80
+
+image:
+  name: "devopscalvine/helloworld"
+  tag: "latest"
+
+nameOverride: ""
+fullnameOverride: ""
+
+service:
+  type: NodePort
+  port: 80
+  annotations: {}
+
+ingress:
+  enabled: false
+  lbGroup: sample-app
+  securityGroup: sg-default
+  annotations:
+   alb.ingress.kubernetes.io/scheme: internet-facing
+  path: /
+  hosts:
+    - sample.local.com
+  tls: []
+
+resources: {}
+
+nodeSelector: {}
+
+tolerations: []
+
+affinity: {}
+
+environment: {}
