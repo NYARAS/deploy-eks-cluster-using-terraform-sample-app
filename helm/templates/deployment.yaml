@@ -1,4 +1,5 @@
----apiVersion: apps/v1
+---
+apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: {{ .Values.app.name }}
@@ -6,6 +7,9 @@ metadata:
   labels:
     app: {{ .Values.app.name }}
     group: {{ .Values.app.group }}
+  annotations:
+    meta.helm.sh/release-name: {{ .Values.app.release_name }}
+    meta.helm.sh/release-namespace: {{ .Values.app.namespace }}
 spec:
   replicas: {{ .Values.app.replicaCount }}
   selector:

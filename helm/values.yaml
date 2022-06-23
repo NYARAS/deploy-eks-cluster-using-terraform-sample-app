@@ -9,7 +9,7 @@ app:
   maxReplicas: 10
   targetCPUup: 60
   container:
-    port: 80
+    port: 8080
 
 image:
   name: "devopscalvine/helloworld"
@@ -20,11 +20,11 @@ fullnameOverride: ""
 
 service:
   type: NodePort
-  port: 80
+  port: 8080
   annotations: {}
 
 ingress:
-  enabled: false
+  enabled: true
   lbGroup: sample-app
   securityGroup: sg-default
   annotations:
