@@ -3,6 +3,7 @@ stages:
   - code-quality
   - pre-deploy
   - deploy
+  - destroy
 
 markdown_lint:
   stage: code-quality
@@ -85,3 +86,20 @@ deploy_development:
       --set ingress.lbGroup="my-sample-app-eks"
       --set ingress.securityGroup="devops-demo-development-alb"
       --set service.name="$APP_NAME"
+
+destroy_development:
+  stage: destroy
+  image: devth/helm:v3.2.4
+  environment:
+    name: development
+  when: manual
+  variables:
+    APP_NAME: "sample-app"
+    KUBERNETES_NAMESPACE: "dev"
+  before_script:
+    - apk add py-pip --update
+    - pip install awscli
+    - aws eks --region ${AWS_DEFAULT_REGION} update-kubeconfig
+      --name ${KUBERNETES_CLUSTER}
+  script:
+    - helm uninstall ${APP_NAME} --namespace ${KUBERNETES_NAMESPACE}
