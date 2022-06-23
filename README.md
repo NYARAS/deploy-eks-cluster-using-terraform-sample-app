@@ -1,6 +1,6 @@
-# deploy-eks-cluster-using-terraform-sample-app
+# deploy to eks cluster using terraform
 
-Sample app  deployment using Helm Chart to AWS EKS
+Sample app deployment using Helm Chart to AWS EKS
 
 ## Usage
 
